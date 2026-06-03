@@ -81,7 +81,7 @@ export const SingleMessage = ({ message, user, onUnauthorized, fetchPosts }) => 
             </label>
           </div>
         )}
-
+//Radera-knappen ligger utanför isOwner-kontrollen — den visas för alla, även inloggade användare som inte äger meddelandet.Båda DELETE-problemen hänger ihop och behöver fixas på båda backend och frontend för att kravet ska vara uppfyllt.
         <div className="message-actions">
           <button type="button" className="delete-btn" onClick={onDelete}>🗑️</button>
 
