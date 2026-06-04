@@ -72,7 +72,7 @@ app.post("/register", async (req, res) => {
     })
   }
 })
-
+//ingen begränsning på inloggningsförsök, öppet för brute force-attacker, lägg in maxförsök på 10 ggr per IP, per dygn.
 app.post("/login", async (req, res) => {
   try {
     const { login, password } = req.body

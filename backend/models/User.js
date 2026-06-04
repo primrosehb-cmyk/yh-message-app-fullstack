@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-
+// Password length requirements: Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
-  // Password length requirements: Password must be at least 8 characters
+
   password: {
     type: String,
     required: true,
