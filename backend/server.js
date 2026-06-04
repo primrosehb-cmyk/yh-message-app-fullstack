@@ -24,7 +24,7 @@ app.use(express.json())
 app.get("/", (req, res) => {
   res.send(listEndpoints(app))
 })
-
+//ingen begränsning på inloggningsförsök, öppet för brute force-attacker, lägg in maxförsök på 10 ggr per IP, per dygn.
 app.post("/register", async (req, res) => {
   try {
     const { email, password, username } = req.body
@@ -72,7 +72,7 @@ app.post("/register", async (req, res) => {
     })
   }
 })
-//ingen begränsning på inloggningsförsök, öppet för brute force-attacker, lägg in maxförsök på 10 ggr per IP, per dygn.
+
 app.post("/login", async (req, res) => {
   try {
     const { login, password } = req.body
