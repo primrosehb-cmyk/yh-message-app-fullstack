@@ -28,11 +28,18 @@ app.get("/", (req, res) => {
 app.post("/register", async (req, res) => {
   try {
     const { email, password, username } = req.body
+// KRAV 1 - Del 2: Input validering av användarnamn
+// Kontrollerar att användarnamnet inte är tomt och minst 2 tecken
+// Kopplar till Input Validation — lita aldrig på input från användaren
 
+// SAKNAS: Lösenordslängd valideras inte
+// Borde finnas: if (password.length < 8) { return fel }
     if (!username || username.trim().length < 2) {
       return res.status(400).json({ success: false, message: "Username must be at least 2 characters" })
     }
-
+// KRAV 1: Kontrollerar att användarnamn och email är unika
+// Söker i databasen — finns användaren redan stoppas registreringen
+// Skyddar mot Spoofing (S i STRIDE) — ingen kan ta någon annans identitet
     const existingUser = await User.findOne({
       $or: [{ email: email.toLowerCase() }, { username: username.trim() }]
     })
